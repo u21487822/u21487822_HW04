@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@model _21487822_HW04.Models.UserDetail
+<h2>Donations Page</h2>
+
+
+
+
+@using (Html.BeginForm("Index", "Gallery", FormMethod.Post))
+    {
+
+
+    <div class="form-group">
+        <label for="mCardNumber">Card Number:</label>
+        <input type="number" maxlength="16" class="form-control"  id="CardNumber">
+    </div>
+
+    <div class="form-group">
+        <label for="mExpirationDate">Expiration Date:</label>
+        <input type="date" class="form-control" name="exp" id="ExpiationDate">
+    </div>
+
+    <div class="form-group">
+        <label for="mCVVNumber">CVV Number</label>
+        <input type="number" maxlength="3" class="form-control" id="CVVNumber">
+    </div>
+
+        <div class="form-group">
+            <label for="mSecurityCode">Security Code</label>
+        <input type="number" maxlength="4" class="form-control"id="SecurityCode">
+    </div>
+
+    <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" class="form-control"  id="amount">
+    </div>
+
+    <button type="submit" onsubmit="myfunction()" class="btn btn-primary">Submit</button>
+    @*<input type="submit" value="submit" class="btn btn-primary" />
+    <script>
+        function myfunction() {
+            alert("Thank you for the payment");
+        }
+    </script>*@
+} 

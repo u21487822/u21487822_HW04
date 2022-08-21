@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Volunteerism Page</h2>
+
+@{
+    var msg = "";
+    if (IsPost)
+    {
+        //var username = RequestContext["name"];
+        var userName = Request["name"];
+        var userSurname = Request["surname"];
+        var userAge = Request["age"];
+        var userEmail = Request["email"];
+
+        var tData = userName + "," + userSurname + "," + userAge + "," + userEmail + Environment.NewLine;
+
+
+        var dataFile = Server.MapPath("~/Temp_Data/tempData.txt");
+        File.AppendAllText(@dataFile, tData);
+        msg = "Information saved.";
+    }
+
+
+}
+
+
+<div class="well-sm">
+    <form id="form1" method="post">
+        <div>
+            <table>
+                <tr>
+                    <td><p>&nbsp;Name:&nbsp;</p></td>
+                    <td><p><input id="userName" name="name" type="text" value="" /></p></td>
+                </tr>
+
+                <tr>
+                    <td><p>&nbsp;Surname:&nbsp;</p></td>
+                    <td><p><input id="userSurname" name="surname" type="text" value="" /></p></td>
+                </tr>
+
+                <tr>
+                    <td><p>&nbsp;Age:&nbsp;</p></td>
+                    <td><p><input id="userAge" name="age" type="text" value="" /></p></td>
+                </tr>
+
+                <tr>
+                    <td><p>&nbsp;Email:&nbsp;</p></td>
+                    <td><p><input id="userEmail" name="email" type="text" value="" /></p></td>
+                </tr>
+
+                <tr>
+                    <td><p>&nbsp;</p></td>
+                    <td><p><input type="submit" value="Submit" /></p></td>
+                </tr>
+            </table>
+        </div>
+
+    </form>
+</div>
+
+
+
+@*
+    <div class="container">
+        <h3>Student Registration Form: </h3>
+    @Html.Hidden("StudentId", "100")
+        @using (Html.BeginForm("Index", "Volunteer", FormMethod.Post))
+        {
+            <div>
+                <table border="1" class="table table-bordered" style="width:500px;">
+                    <tbody>
+                        <tr>
+                            <td>@Html.Label("User Name ")</td>
+                            <td>@Html.TextBox("txtUserName", "", new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("User Surname ")</td>
+                            <td>@Html.TextBox("txtUserSurname", "", new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("User Age ")</td>
+                            <td>@Html.TextBox("txtUserSurname", "", new { @class = "form-control" })</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Gender:
+                            </td>
+                            <td>
+                                @Html.RadioButton("Gender", "Male", false, new { id = "male" }) Male
+                                @Html.RadioButton("Gender", "Female", false, new { id = "female" }) Female
+                                @Html.RadioButton("Gender", "Other", false, new { id = "female" }) Other
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Address:</td>
+                            <td>@Html.TextArea("Address", " ", new { @class = "form-control", id = "IdAddress" })</td>
+                        </tr>
+
+                        <tr>
+                        <tr>
+                            <td>@Html.Label("User Email Address ")</td>
+                            <td>@Html.TextBox("txtUserEmail", "", new { @class = "form-control" })</td>
+                        </tr>
+                        </tr>
+
+
+                        <tr>
+                            <td>Experience in a similar project</td>
+                            <td>
+                                @Html.CheckBox("Yess", true) Yes
+                                @Html.CheckBox("Noo") No
+                                @Html.CheckBox("Maybee") Maybe
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" class="btn-primary" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>*@
+
+

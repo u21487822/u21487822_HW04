@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*@model List<Article>
+
+<div class="container">
+    <div class="row">
+        @foreach (var article in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card h-100" style="width: 20rem;">
+                    <img src="@article.LeadingImage" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">@article.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">by @article.Author.Name</h6>
+                        <p class="card-text">@article.StoryLeadText</p>
+                        <a href="@article.MainStoryURL" class="btn mr-2"><i class="fas fa-link"></i>Read more</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>*@

@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@model List<_21487822_HW04.Models.UserDetail>
+<h2>Volunteers in GreenTree</h2>
+<style type="text/css">
+    .auto-style {
+        color: #FFFFFF;
+    }
+
+    .t {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+</style>
+@{
+    var data = "";
+    Array tData = null;
+    char[] delimiterChar = { ',' };
+    var dataFile = Server.MapPath("~/Temp_Data/tempData.txt");
+
+    if (File.Exists(dataFile))
+    {
+        tData = File.ReadAllLines(dataFile);
+        if (tData == null)
+        {
+            // Empty file.
+            data = "The file is empty.";
+        }
+    }
+    else
+    {
+        // File does not exist.
+        data = "The file does not exist.";
+    }
+}
+<div class="well-sm">
+    <div>
+        @data
+        @if (data == "")
+        {
+            <div style="height: 400px; overflow: auto;">
+                <table class="table table-condensed table-hover">
+                    <thead style="position: sticky;top: 0">
+                        <tr bgcolor="#222222" class="auto-style">
+                            <th class="t">Name</th>
+                            <th class="t">Surname</th>
+                            <th class="t">Age</th>
+                            <th class="t">Email</th>
+                            <th class="t">Delete</th>
+                        </tr>
+                    </thead>
+                    @foreach (string dataLine in tData)
+                    {
+                        <tr>
+                            @foreach (string dataItem in dataLine.Split(delimiterChar))
+                            {
+                                <td class="t">@dataItem</td>
+                            }
+
+                            <td class="t"><a class="btn btn-danger removeLink t" onclick="deleteRow(this)" id="delete">Delete</a></td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</div>
+<script src="~/Scripts/Volunteer CRUD/JavaScript.js"></script>
